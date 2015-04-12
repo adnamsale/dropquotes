@@ -33,6 +33,8 @@ After building, you can run the application with the command
 ./build/install/dropquotes/bin/dropquotes
 ```
 
+Alternatively, the project contains an IntelliJ IDEA project, so you can clone the repo and open the project in IDEA.
+
 ## Command Line Arguments
 ```bash
 dropquotes [-d<s/m/l>] [file to solve]
