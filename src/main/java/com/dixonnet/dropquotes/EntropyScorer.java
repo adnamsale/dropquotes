@@ -20,7 +20,7 @@ public class EntropyScorer {
         model = anr.read(zis);
     }
 
-    public double computeCrossEntropy(String sentence) {
+    public double computeScore(String sentence) {
         sentence = sentence.toLowerCase();
 
         TextStreamSentenceReader tssr = new TextStreamSentenceReader(new ByteArrayInputStream(sentence.getBytes()));
@@ -29,8 +29,6 @@ public class EntropyScorer {
             model.getWordEntropies(sent);
         }
 
-        final float log2 = (float)Math.log10(2);
-
         String result = model.printReport();
         int start = result.indexOf("1-gram");
         int finish = result.indexOf('%', start);
@@ -38,7 +36,7 @@ public class EntropyScorer {
         start = result.indexOf("2-gram");
         finish = result.indexOf('%', start);
         double bigram = Double.parseDouble(result.substring(start + 7, finish));
-        return unigram * 1000 + bigram;
+        return Math.round(unigram) * 1000 + Math.round(bigram);
     }
 
     private NgramLM model;

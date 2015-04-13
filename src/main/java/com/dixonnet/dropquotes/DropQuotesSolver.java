@@ -196,7 +196,7 @@ public class DropQuotesSolver {
             if (!answerCache.contains(sb.toString())) {
                 String s = sb.toString();
                 answerCache.add(s);
-                double entropy = scorer.computeCrossEntropy(s);
+                double entropy = scorer.computeScore(s);
                 if (bestScore < entropy) {
                     System.out.println(entropy + " " + s);
                     bestScore = entropy;
