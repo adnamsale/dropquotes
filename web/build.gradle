@@ -1,0 +1,12 @@
+apply plugin: 'war'
+apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
+
+dependencies {
+    providedCompile "javax.servlet:servlet-api:2.5"
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    compile project(':lib');
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+gretty.contextPath = 'dropquotes'
+gretty.jvmArgs = ['-Xmx1024M']

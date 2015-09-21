@@ -1,0 +1,10 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+    <servlet>
+        <servlet-name>Servlet</servlet-name>
+        <servlet-class>com.dixonnet.dropquotes.Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet</servlet-name>
+        <url-pattern>/solve</url-pattern>
+    </servlet-mapping>
+</web-app>

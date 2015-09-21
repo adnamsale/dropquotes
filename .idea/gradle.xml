@@ -6,10 +6,13 @@
         <option name="createEmptyContentRootDirectories" value="true" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="1.7" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/aws" />
+            <option value="$PROJECT_DIR$/cli" />
+            <option value="$PROJECT_DIR$/lib" />
+            <option value="$PROJECT_DIR$/web" />
           </set>
         </option>
         <option name="useAutoImport" value="true" />

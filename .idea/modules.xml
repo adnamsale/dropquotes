@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/aws/aws.iml" filepath="$PROJECT_DIR$/aws/aws.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cli/cli.iml" filepath="$PROJECT_DIR$/cli/cli.iml" />
       <module fileurl="file://$PROJECT_DIR$/dropquotes.iml" filepath="$PROJECT_DIR$/dropquotes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
     </modules>
   </component>
 </project>

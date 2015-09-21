@@ -1,0 +1,15 @@
+dependencies {
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    compile group: 'com.amazonaws', name: 'aws-lambda-java-core', version: '1.0.0'
+    compile project(':lib')
+}
+
+task buildZip(type: Zip) {
+    from compileJava
+    from processResources
+    into('lib') {
+        from configurations.runtime
+    }
+}
+
+build.dependsOn buildZip

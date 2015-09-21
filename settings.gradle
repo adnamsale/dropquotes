@@ -1,2 +1,6 @@
 rootProject.name = 'dropquotes'
+include 'lib'
+include 'cli'
+include 'web'
+include 'aws'
 

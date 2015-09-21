@@ -1,0 +1,8 @@
+apply plugin: 'application'
+
+mainClassName = 'com.dixonnet.dropquotes.Main'
+
+dependencies {
+    compile project(':lib')
+    compile group: 'net.sf.jopt-simple', name: 'jopt-simple', version: '4.9-beta-1'
+}
