@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>DefaultValue</key>
+		<string>aws</string>
+		<key>Key</key>
+		<string>server</string>
+		<key>Title</key>
+		<string>Server</string>
+		<key>Titles</key>
+		<array>
+			<string>AWS</string>
+			<string>Local</string>
+			<string>Custom</string>
+		</array>
+		<key>Type</key>
+		<string>RadioButtons</string>
+		<key>Values</key>
+		<array>
+			<string>aws</string>
+			<string>local</string>
+			<string>custom</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Key</key>
+		<string>custom</string>
+		<key>Title</key>
+		<string>Custom</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+</array>
+</plist>

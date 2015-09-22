@@ -1,4 +1,4 @@
-var solveFunc = function() {
+function solveFunc()  {
     var button = document.getElementById('solveButton');
     var msg = document.getElementById('solveMessage');
     if (button.value !== 'Solve') {
@@ -7,14 +7,26 @@ var solveFunc = function() {
     button.value = 'Solving...';
     msg.innerHTML = '';
     var src = document.body.innerHTML;
-    var postdata = JSON.stringify({'src' : src});
-    var req = new XMLHttpRequest();
-//    req.open('POST', 'http://localhost:8080/dropquotes/solve');
-    req.open('POST', 'https://rtqxwn6ek5.execute-api.us-east-1.amazonaws.com/prod/dropquotes/solve');
-    req.setRequestHeader('Content-Type', 'application/json');
-    req.onload = function() {
-        if (req.status === 200) {
-            var resp = JSON.parse(req.responseText);
+
+    // We need to dispatch to the global page to access our preferences
+    safari.self.tab.dispatchMessage("solve", src);
+}
+
+function getAnswer(theMessageEvent) {
+    if (theMessageEvent.name === 'theAnswer') {
+        var button = document.getElementById('solveButton');
+        if (!button) {
+            return;
+        }
+        var msg = document.getElementById('solveMessage');
+
+        var status = theMessageEvent.message[0];
+        var responseText = theMessageEvent.message[1];
+
+        button.value = 'Solve';
+
+        if (status === 200) {
+            var resp = JSON.parse(responseText);
             if (resp.answer) {
                 var letters = resp.answer.replace(/ /g, '');
                 for (var i = 0 ; i < letters.length ; ++i) {
@@ -26,17 +38,14 @@ var solveFunc = function() {
             else if (resp.error) {
                 msg.innerHTML = 'Error from server: ' + resp.error;
             }
+            else {
+                msg.innerHTML = 'No solution found';
+            }
         }
         else {
-            msg.innerHTML = 'Error: Server returned status ' + req.status;
+            msg.innerHTML = 'Error: Server returned status ' + status;
         }
-        button.value = 'Solve';
-    };
-    req.onerror = function() {
-        msg.innerHTML = 'Error: Unable to connect to server';
-        button.value = 'Solve';
     }
-    req.send(postdata);
 }
 
 var container = document.getElementById('formResponse');
@@ -51,3 +60,5 @@ if (container) {
     msg.id = 'solveMessage';
     container.appendChild(msg);
 }
+
+safari.self.addEventListener("message", getAnswer, false);

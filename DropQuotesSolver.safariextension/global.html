@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Global HTML page</title>
+    <script type="text/javascript">
+
+function solve(event) {
+    var src = event.message;
+
+    var postdata = JSON.stringify({'src' : src});
+    var req = new XMLHttpRequest();
+    var serverType = safari.extension.settings.server;
+    var server;
+    if (serverType === 'aws') {
+        server = 'https://rtqxwn6ek5.execute-api.us-east-1.amazonaws.com/prod/dropquotes/solve';
+    }
+    else if (serverType === 'local') {
+        server = 'http://localhost:8080/dropquotes/solve';
+    }
+    else {
+        server = safari.extension.settings.custom;
+    }
+    req.open('POST', server);
+    req.setRequestHeader('Content-Type', 'application/json');
+    req.onload = function() {
+        event.target.page.dispatchMessage("theAnswer", [req.status, req.responseText]);
+    };
+    req.onerror = function() {
+        event.target.page.dispatchMessage('theAnswer', [0, '{ "error" : "Connection error" }']);
+    }
+    req.send(postdata);
+}
+
+function respondToMessage(theMessageEvent) {
+    if(theMessageEvent.name === "solve") {
+        solve(theMessageEvent);
+    }
+}
+
+safari.application.addEventListener("message", respondToMessage, false);
+    </script>
+</head>
+<body>
+</body>
+</html>
