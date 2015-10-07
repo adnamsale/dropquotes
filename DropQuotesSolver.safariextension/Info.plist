@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Mark Dixon</string>
 	<key>Builder Version</key>
-	<string>10600.8.9</string>
+	<string>11601.1.56</string>
 	<key>CFBundleDisplayName</key>
 	<string>DropQuotesSolver</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -43,6 +43,8 @@
 			<array>
 				<string>dropquotes.com</string>
 			</array>
+			<key>Include Secure Pages</key>
+			<true/>
 			<key>Level</key>
 			<string>Some</string>
 		</dict>
